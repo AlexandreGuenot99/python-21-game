@@ -49,21 +49,37 @@ def choose_values(amount):
             print('Type a numeral value')
     return input_values
 
+def check_consecutive(board):
+    if len(board) ==1:
+        is_consecutive = True
+    else:
+        for i in range(len(board)-1):
+            if board[i+1] - board[i] !=1:
+                is_consecutive = False
+            else:
+                is_consecutive = True
+           
+    return is_consecutive     
+
 def game():
     is_playing = choose_position()
     while True:
         if is_playing == True:
             print('Your turn')
             amount = choose_amount()
-            input_values = choose_values(amount)
-            print(f'Your chosen values  : {input_values}')
-            for i in range(0,len(input_values)):
-                game_board.append(input_values[i])
+            input_values = choose_values(amount) 
+            consecutive = check_consecutive(input_values)
+            if consecutive:
+                for i in range(len(input_values)):
+                    game_board.append(input_values[i])
+            else:
+                print('Your values are not crescent consecutives. You lost !')
+                break
             is_playing = False
         else:
             print('Computer turn')
             amount = random.randint(1,3)
-            print(f'Computer choose {amount} values')
+            print(f'Computer add {amount} values')
             cpu_values=[]
             if not game_board:
                 for i in range(amount):
