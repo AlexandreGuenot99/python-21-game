@@ -17,7 +17,7 @@ def choose_position():
                 print('Wrong input.')
         else:
             print('Wrong input.')
-    return user_position,is_playing
+    return  is_playing
 
 def choose_amount():
     while True:
@@ -47,13 +47,10 @@ def choose_values(amount):
         except ValueError:
             print('Type a numeral value')
     return input_values
-
-
-user_position,is_playing = choose_position()
-
-
-
-while True:
+    
+def game():
+    is_playing = choose_position()
+    while True:
         if is_playing == True:
             print('Your turn')
             amount = choose_amount()
@@ -66,5 +63,5 @@ while True:
             print([1,2,3])
             is_playing = True
     
+game()
 
-rounds()
