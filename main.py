@@ -1,3 +1,4 @@
+import random
 positions= ['first','second']
 game_board = []
 def choose_position():
@@ -47,7 +48,7 @@ def choose_values(amount):
         except ValueError:
             print('Type a numeral value')
     return input_values
-    
+
 def game():
     is_playing = choose_position()
     while True:
@@ -56,12 +57,23 @@ def game():
             amount = choose_amount()
             input_values = choose_values(amount)
             print(f'Your chosen values  : {input_values}')
+            for i in range(0,len(input_values)):
+                game_board.append(input_values[i])
             is_playing = False
         else:
             print('Computer turn')
-            print('Computer is choosing values')
-            print([1,2,3])
+            amount = random.randint(1,3)
+            print(f'Computer choose {amount} values')
+            cpu_values=[]
+            if not game_board:
+                for i in range(amount):
+                    game_board.append(i+1)
+            else :
+                for i in range(amount):
+                    cpu_values.append(game_board[-1]+1)
+                    game_board.append(cpu_values[i])
             is_playing = True
+            print(f'Order of input after Computer turn is :\n {game_board}')
     
 game()
 
