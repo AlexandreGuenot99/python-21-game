@@ -3,7 +3,7 @@ positions= ['first','second']
 game_board = []
 def choose_position():
     while True:
-        user_position = input('Go firt or second ? (F) (S)\n>')  
+        user_position = input('Go first or second ? (F) (S)\n>')  
         if user_position.isalpha():
             user_position = user_position.upper()
             if user_position == 'F':
